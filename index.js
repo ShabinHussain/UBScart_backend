@@ -22,8 +22,28 @@ require('./db/connectiondb')
 //create server
 const Ubsserver = express()
 
+
+// Configure CORS to allow requests from your frontend
+const allowedOrigins = ['http://localhost:5174', 'https://your-frontend-domain.com'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+    credentials: true
+};
+
+Ubsserver.use(cors(corsOptions));
+
+
 //use cors()
-Ubsserver.use(cors())
+//Ubsserver.use(cors())
 
 //use json() method - middleware
 Ubsserver.use(express.json())
@@ -36,7 +56,7 @@ Ubsserver.use('/uploads',express.static('./uploads'))
 
 
 //set port
-PORT = 8000 || process.env.PORT
+PORT = 6000 || process.env.PORT
 
 //listen to port
 Ubsserver.listen(PORT,()=>{
