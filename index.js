@@ -24,7 +24,7 @@ const Ubsserver = express()
 
 
 // Configure CORS to allow requests from your frontend
-const allowedOrigins = ['http://localhost:5174', 'https://your-frontend-domain.com'];
+const allowedOrigins = ['https://ub-scart-frontend.vercel.app', 'https://ub-scart-frontend.vercel.app'];
 
 const corsOptions = {
     origin: function (origin, callback) {
