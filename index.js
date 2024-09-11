@@ -29,7 +29,7 @@ Ubsserver.use(cors())
 Ubsserver.use(express.json())
 
 //use router
-Ubsserver.use(router)
+Ubsserver.use('/api',router)
 
 
 Ubsserver.use('/uploads',express.static('./uploads'))
